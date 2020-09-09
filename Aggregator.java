@@ -1,12 +1,12 @@
-package com.javarush.task.task28.task2810;
+package aggregatror;
 
-import com.javarush.task.task28.task2810.model.Provider;
-import com.javarush.task.task28.task2810.model.Strategy;
+import aggregatror.model.HHStrategy;
+import aggregatror.model.Provider;
 
 public class Aggregator {
     public static void main(String[] args) {
-        Provider provider = new Provider(new Strategy() {});
+        Provider provider = new Provider(new HHStrategy());
         Controller controller = new Controller(provider);
-        System.out.println(controller);
+        controller.scan();
     }
 }

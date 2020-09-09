@@ -20,7 +20,7 @@ public class Provider {
         return strategy
                 .getVacancies(searchString)
                 .stream()
-                .filter(vacancy -> vacancy.getTitle().toLowerCase().contains(searchString))
+                .filter(vacancy -> vacancy.getTitle().toLowerCase().contains("java"))
                 .collect(Collectors.toList());
     }
 }

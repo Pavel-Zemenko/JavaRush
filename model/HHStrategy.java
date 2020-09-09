@@ -3,67 +3,84 @@ package aggregatror.model;
 import aggregatror.vo.Vacancy;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class HHStrategy implements Strategy {
     private static final String URL_FORMAT = "http://hh.ua/search/vacancy?text=java+%s&page=%d";
+    private String attrName = "data-qa";
+    private String attrValue = "vacancy-serp__vacancy";
 
     @Override
     public List<Vacancy> getVacancies(String searchString) {
-        String url = "https://grc.ua/search/vacancy?text=java+киев";
-        try {
-            Document document = Jsoup.connect(url)
-                    .userAgent("Firefox/80.0")
-                    .referrer("https://www.google.ru/")
-                    .get();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-        // Заглушка:
-
         List<Vacancy> vacancies = new ArrayList<>();
-        Vacancy[] v = new Vacancy[4];
+        int page = 0;
 
-        v[0] = new Vacancy();
-        v[0].setCity("Харьков");
-        v[0].setCompanyName("NIX Solutions");
-        v[0].setSalary("700$");
-        v[0].setTitle("Java Developer");
-        v[0].setSiteName("NIX Solutions");
-        v[0].setUrl("nixsolutions.com");
+        while (true) {
+            Document document;
 
-        v[1] = new Vacancy();
-        v[1].setCity("Москва");
-        v[1].setCompanyName("Яндекс");
-        v[1].setSalary("1500$");
-        v[1].setTitle("Java Developer");
-        v[1].setSiteName("Яндекс");
-        v[1].setUrl("yandex.ru");
+            try {
+                document = getDocument(searchString, page++);
+            } catch (IOException e) {
+                throw new RuntimeException("Unable to create HTML context", e);
+            }
 
-        v[2] = new Vacancy();
-        v[2].setCity("Кукуевка");
-        v[2].setCompanyName("ООО Фхтагн");
-        v[2].setSalary("50$");
-        v[2].setTitle("C# Developer");
-        v[2].setSiteName("ООО Фхтагн");
-        v[2].setUrl("fhtagn.org");
+            Elements elements = document.getElementsByAttributeValue(attrName, attrValue);
 
-        v[3] = new Vacancy();
-        v[3].setCity("Берлин");
-        v[3].setCompanyName("Siemens");
-        v[3].setSalary("1200$");
-        v[3].setTitle("Java Developer");
-        v[3].setSiteName("Siemens");
-        v[3].setUrl("siemens.com");
+            if (elements == null || elements.size() == 0) {
+                break;
+            }
 
-        Collections.addAll(vacancies, v);
+            for (Element element : elements) {
+                Element e = element.select(getQuery("-title")).first();
+                String url = e.attr("href");
+                String title = getTextValue(element, "-title");
+                String salary = getTextValue(element, "-compensation");
+                String city = getTextValue(element, "-address");
+                String company = getTextValue(element, "-employer");
+                String site = "HeadHunter";
+
+                Vacancy vacancy = new Vacancy();
+                vacancy.setTitle(title);
+                vacancy.setUrl(url);
+                vacancy.setSalary(salary);
+                vacancy.setCity(city);
+                vacancy.setCompanyName(company);
+                vacancy.setSiteName(site);
+                vacancies.add(vacancy);
+            }
+            break;  // ДЛЯ ТЕСТИРОВАНИЯ
+        }
         return vacancies;
+    }
+
+    protected Document getDocument(String searchString, int page) throws IOException {
+        String city = URLEncoder.encode(searchString, "UTF-8");
+        String url = String.format(URL_FORMAT, city, page);
+        url = "http://javarush.ru/testdata/big28data.html";  // ДЛЯ ТЕСТИРОВАНИЯ
+
+        Document document = Jsoup.connect(url)
+                .userAgent("Firefox/80.0")
+                .referrer("https://www.google.ru/")
+                .ignoreHttpErrors(true)
+                .get();
+
+        return document;
+    }
+
+    private String getTextValue(Element element, String suffix) {
+        String query = getQuery(suffix);
+        Elements result = element.select(query);
+        return result.size() > 0 ? result.first().ownText() : "";
+    }
+
+    private String getQuery(String suffix) {
+        return String.format("[%s=%s%s]", attrName, attrValue, suffix);
     }
 
 }

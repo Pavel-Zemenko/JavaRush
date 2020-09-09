@@ -20,7 +20,7 @@ public class Controller {
     public void scan() {
         List<Vacancy> vacancies = new ArrayList<>();
         for (Provider provider : providers) {
-            vacancies.addAll(provider.getJavaVacancies("java"));
+            vacancies.addAll(provider.getJavaVacancies("Odessa"));
         }
         System.out.println(vacancies.size());
     }
