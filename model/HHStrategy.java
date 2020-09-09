@@ -54,7 +54,6 @@ public class HHStrategy implements Strategy {
                 vacancy.setSiteName(site);
                 vacancies.add(vacancy);
             }
-            break;  // ДЛЯ ТЕСТИРОВАНИЯ
         }
         return vacancies;
     }
@@ -62,7 +61,6 @@ public class HHStrategy implements Strategy {
     protected Document getDocument(String searchString, int page) throws IOException {
         String city = URLEncoder.encode(searchString, "UTF-8");
         String url = String.format(URL_FORMAT, city, page);
-        url = "http://javarush.ru/testdata/big28data.html";  // ДЛЯ ТЕСТИРОВАНИЯ
 
         Document document = Jsoup.connect(url)
                 .userAgent("Firefox/80.0")
