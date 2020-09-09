@@ -1,7 +1,10 @@
 package aggregatror.model;
 
 import aggregatror.vo.Vacancy;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -11,7 +14,16 @@ public class HHStrategy implements Strategy {
 
     @Override
     public List<Vacancy> getVacancies(String searchString) {
-        // Заглушка
+        String url = "https://hh.ru/search/vacancy?text=java+searchString&page=0";
+        try {
+            Document document = Jsoup.connect(url).get();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        // Заглушка:
+
         List<Vacancy> vacancies = new ArrayList<>();
         Vacancy[] v = new Vacancy[4];
 
@@ -50,4 +62,5 @@ public class HHStrategy implements Strategy {
         Collections.addAll(vacancies, v);
         return vacancies;
     }
+
 }
