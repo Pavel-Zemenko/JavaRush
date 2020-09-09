@@ -3,6 +3,9 @@ package aggregatror.view;
 import aggregatror.Controller;
 import aggregatror.vo.Vacancy;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.List;
 
 public class HtmlView implements View {
@@ -34,7 +37,9 @@ public class HtmlView implements View {
         return "";
     }
 
-    private void updateFile(String content) {
-
+    private void updateFile(String content) throws IOException {
+        try (OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(filePath))) {
+            writer.write(content);
+        }
     }
 }
