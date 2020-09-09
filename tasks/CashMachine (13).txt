@@ -1,0 +1,36 @@
+CashMachine (13)
+
+Ты уже разобрался с ResourceBundle - это круто.
+Теперь мы сможем прикрутить локализацию, т.е. поддержку нескольких языков.
+
+1. В DepositCommand, ExitCommand, InfoCommand добавь поле private ResourceBundle res,
+   которое инициализируй соответствующим ресурсом.
+   Для DepositCommand ресурс deposit_en.properties.
+   Для ExitCommand ресурс exit_en.properties.
+   Для InfoCommand ресурс info_en.properties.
+
+   Важно: путь к ресурсам строй динамически, для этого используй у класса CashMachine
+   метод getPackage().
+
+2. Для каждого нового ресурса замени все строки в соответствующей команде.
+
+
+Требования:
+
+    DepositCommand должен содержать приватное поле ResourceBundle res.
+
+    ExitCommand должен содержать приватное поле ResourceBundle res.
+
+    InfoCommand должен содержать приватное поле ResourceBundle res.
+
+    Поле res класса DepositCommand должно быть проинициализировано
+    из файла deposit_en.properties.
+
+    Поле res класса ExitCommand должно быть проинициализировано
+    из файла exit_en.properties.
+
+    Поле res класса InfoCommand должно быть проинициализировано
+    из файла info_en.properties.
+
+    В методе execute() классов DepositCommand, ExitCommand, InfoCommand
+    используй подходящие ресурсы.
