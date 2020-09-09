@@ -14,9 +14,12 @@ public class HHStrategy implements Strategy {
 
     @Override
     public List<Vacancy> getVacancies(String searchString) {
-        String url = "https://hh.ru/search/vacancy?text=java+searchString&page=0";
+        String url = "https://grc.ua/search/vacancy?text=java+киев";
         try {
-            Document document = Jsoup.connect(url).get();
+            Document document = Jsoup.connect(url)
+                    .userAgent("Firefox/80.0")
+                    .referrer("https://www.google.ru/")
+                    .get();
         } catch (IOException e) {
             e.printStackTrace();
         }
