@@ -1,35 +1,18 @@
 package aggregatror;
 
-import aggregatror.model.Provider;
-import aggregatror.vo.Vacancy;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import aggregatror.model.Model;
 
 public class Controller {
-    private Provider[] providers;
+    private Model model;
 
-    public Controller(Provider ... providers) {
-        if (providers.length == 0) {
+    public Controller(Model model) {
+        if (model == null) {
             throw new IllegalArgumentException();
         }
-        this.providers = providers;
+        this.model = model;
     }
 
-    public void scan() {
-        List<Vacancy> vacancies = new ArrayList<>();
-        for (Provider provider : providers) {
-            vacancies.addAll(provider.getJavaVacancies("Odessa"));
-        }
-        System.out.println(vacancies.size());
+    public void onCitySelect(String cityName) {
+        model.selectCity(cityName);
     }
-
-    @Override
-    public String toString() {
-        return "Controller{" +
-                "providers=" + Arrays.toString(providers) +
-                '}';
-    }
-
 }
