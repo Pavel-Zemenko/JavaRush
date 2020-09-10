@@ -1,7 +1,7 @@
-package aggregatror.model;
+package aggregatror.aggregator.model;
 
-import aggregatror.view.View;
-import aggregatror.vo.Vacancy;
+import aggregatror.aggregator.view.View;
+import aggregatror.aggregator.vo.Vacancy;
 
 import java.util.ArrayList;
 import java.util.List;

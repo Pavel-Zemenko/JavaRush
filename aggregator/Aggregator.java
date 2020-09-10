@@ -1,12 +1,12 @@
-package aggregatror;
+package aggregatror.aggregator;
 
-import aggregatror.model.HHStrategy;
-import aggregatror.model.Model;
-import aggregatror.model.MoikrugStrategy;
-import aggregatror.model.Provider;
-import aggregatror.model.Strategy;
-import aggregatror.view.HtmlView;
-import aggregatror.view.View;
+import aggregatror.aggregator.model.HHStrategy;
+import aggregatror.aggregator.model.Model;
+import aggregatror.aggregator.model.MoikrugStrategy;
+import aggregatror.aggregator.model.Provider;
+import aggregatror.aggregator.model.Strategy;
+import aggregatror.aggregator.view.HtmlView;
+import aggregatror.aggregator.view.View;
 
 public class Aggregator {
     public static void main(String[] args) {

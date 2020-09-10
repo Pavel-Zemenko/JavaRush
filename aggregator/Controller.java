@@ -1,6 +1,6 @@
-package aggregatror;
+package aggregatror.aggregator;
 
-import aggregatror.model.Model;
+import aggregatror.aggregator.model.Model;
 
 public class Controller {
     private Model model;

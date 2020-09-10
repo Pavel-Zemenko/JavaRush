@@ -1,6 +1,6 @@
-package aggregatror.model;
+package aggregatror.aggregator.model;
 
-import aggregatror.vo.Vacancy;
+import aggregatror.aggregator.vo.Vacancy;
 
 import java.util.List;
 import java.util.stream.Collectors;

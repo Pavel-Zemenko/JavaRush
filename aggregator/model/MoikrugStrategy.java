@@ -1,6 +1,6 @@
-package aggregatror.model;
+package aggregatror.aggregator.model;
 
-import aggregatror.vo.Vacancy;
+import aggregatror.aggregator.vo.Vacancy;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;

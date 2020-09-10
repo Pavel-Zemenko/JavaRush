@@ -1,4 +1,4 @@
-package aggregatror.vo;
+package aggregatror.aggregator.vo;
 
 import java.util.Objects;
 
