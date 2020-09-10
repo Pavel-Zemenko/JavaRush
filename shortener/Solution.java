@@ -2,6 +2,7 @@ package javarush.shortener;
 
 import javarush.shortener.strategy.FileStorageStrategy;
 import javarush.shortener.strategy.HashMapStorageStrategy;
+import javarush.shortener.strategy.OurHashBiMapStorageStrategy;
 import javarush.shortener.strategy.OurHashMapStorageStrategy;
 import javarush.shortener.strategy.StorageStrategy;
 
@@ -23,6 +24,10 @@ public class Solution {
 
         strategy = new FileStorageStrategy();
         testStrategy(strategy, 500);
+        System.out.println();
+
+        strategy = new OurHashBiMapStorageStrategy();
+        testStrategy(strategy, 10000);
         System.out.println();
 
     }
