@@ -9,7 +9,7 @@ import javarush.shortener.strategy.OurHashBiMapStorageStrategy;
 import javarush.shortener.strategy.OurHashMapStorageStrategy;
 import javarush.shortener.strategy.StorageStrategy;
 
-import static shortener.Solution.testStrategy;
+import static javarush.shortener.Solution.testStrategy;
 
 public class TEST {
     public static void main(String[] args) throws Exception {
