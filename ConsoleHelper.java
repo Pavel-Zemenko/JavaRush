@@ -22,9 +22,9 @@ public class ConsoleHelper {
 
     public static String askCurrencyCode() {
         while (true) {
-            writeMessage("Выберите валюту: RUR, USD, UAH");
+            writeMessage("Выберите валюту: RUR, USD, EUR, UAH");
             String currencyCode = readString().toUpperCase();
-            if (currencyCode.matches("RUR|USD|UAH")) {
+            if (currencyCode.matches("RUR|USD|EUR|UAH")) {
                 return currencyCode;
             }
             writeMessage("Валюта выбрана неверно, повторите ввод.");

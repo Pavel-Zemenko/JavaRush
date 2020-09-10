@@ -1,5 +1,7 @@
 package cashmachine;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,5 +19,9 @@ public class CurrencyManipulatorFactory {
             manipulatorMap.put(currencyCode, manipulator);
         }
         return manipulator;
+    }
+
+    public static Collection<CurrencyManipulator> getAllCurrencyManipulators() {
+        return Collections.unmodifiableCollection(manipulatorMap.values());
     }
 }
