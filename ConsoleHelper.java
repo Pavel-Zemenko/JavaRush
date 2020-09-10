@@ -41,4 +41,16 @@ public class ConsoleHelper {
             writeMessage("Данные введены некорректно, повторите ввод.");
         }
     }
+
+    public static Operation askOperation() {
+        while (true) {
+            writeMessage("Введите код операции: 1 - INFO, 2 - DEPOSIT, 3 - WITHDRAW, 4 - EXIT");
+            try {
+                int ordinal = Integer.parseInt(readString());
+                return Operation.getAllowableOperationByOrdinal(ordinal);
+            } catch (Exception e) {
+                writeMessage("Операция выбрана неверно, повторите ввод.");
+            }
+        }
+    }
 }
