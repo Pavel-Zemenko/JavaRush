@@ -26,4 +26,13 @@ public class CurrencyManipulator {
         }
         return amount;
     }
+
+    public boolean hasMoney() {
+        for (Integer i : denominations.values()) {
+            if (i > 0) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
