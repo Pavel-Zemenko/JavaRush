@@ -1,5 +1,6 @@
 package javarush.shortener;
 
+import javarush.shortener.strategy.FileStorageStrategy;
 import javarush.shortener.strategy.HashMapStorageStrategy;
 import javarush.shortener.strategy.OurHashMapStorageStrategy;
 import javarush.shortener.strategy.StorageStrategy;
@@ -19,6 +20,11 @@ public class Solution {
         strategy = new OurHashMapStorageStrategy();
         testStrategy(strategy, 10000);
         System.out.println();
+
+        strategy = new FileStorageStrategy();
+        testStrategy(strategy, 500);
+        System.out.println();
+
     }
 
     public static Set<Long> getIds(Shortener shortener, Set<String> strings) {
