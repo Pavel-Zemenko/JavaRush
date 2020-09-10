@@ -6,6 +6,7 @@ import javarush.shortener.strategy.HashMapStorageStrategy;
 import javarush.shortener.strategy.OurHashBiMapStorageStrategy;
 import javarush.shortener.strategy.OurHashMapStorageStrategy;
 import javarush.shortener.strategy.StorageStrategy;
+import javarush.shortener.strategy.DualHashBidiMapStorageStrategy;
 
 import java.util.Date;
 import java.util.HashSet;
@@ -35,6 +36,9 @@ public class Solution {
         testStrategy(strategy, 10000);
         System.out.println();
 
+        strategy = new DualHashBidiMapStorageStrategy();
+        testStrategy(strategy, 10000);
+        System.out.println();
     }
 
     public static Set<Long> getIds(Shortener shortener, Set<String> strings) {

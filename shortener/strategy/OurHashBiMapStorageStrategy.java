@@ -1,7 +1,5 @@
 package javarush.shortener.strategy;
 
-import javarush.shortener.strategy.StorageStrategy;
-
 import java.util.HashMap;
 
 public class OurHashBiMapStorageStrategy implements StorageStrategy {
