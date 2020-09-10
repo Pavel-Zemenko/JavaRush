@@ -1,14 +1,13 @@
 package cashmachine;
 
+import cashmachine.command.CommandExecutor;
+
 public class CashMachine {
     public static void main(String[] args) {
-        String currencyCode = ConsoleHelper.askCurrencyCode();
-        String[] data = ConsoleHelper.getValidTwoDigits(currencyCode);
-        CurrencyManipulator manipulator =
-                CurrencyManipulatorFactory.getManipulatorByCurrencyCode(currencyCode);
-
-        manipulator.addAmount(Integer.parseInt(data[0]), Integer.parseInt(data[1]));
-
-        System.out.println(manipulator.getTotalAmount());
+        Operation operation;
+        do {
+            operation = ConsoleHelper.askOperation();
+            CommandExecutor.execute(operation);
+        } while (operation != Operation.EXIT);
     }
 }
