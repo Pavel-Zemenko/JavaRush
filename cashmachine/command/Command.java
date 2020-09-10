@@ -1,6 +1,6 @@
-package cashmachine.cashmachine.command;
+package javarush.cashmachine.command;
 
-import cashmachine.cashmachine.exception.InterruptOperationException;
+import javarush.cashmachine.exception.InterruptOperationException;
 
 public interface Command {
     void execute() throws InterruptOperationException;

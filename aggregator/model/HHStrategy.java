@@ -1,6 +1,6 @@
-package aggregatror.aggregator.model;
+package javarush.aggregator.model;
 
-import aggregatror.aggregator.vo.Vacancy;
+import javarush.aggregator.vo.Vacancy;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;

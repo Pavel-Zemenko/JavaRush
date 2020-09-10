@@ -1,4 +1,4 @@
-package aggregatror.aggregator.vo;
+package javarush.aggregator.vo;
 
 import java.util.Objects;
 

@@ -1,7 +1,7 @@
-package cashmachine.cashmachine.command;
+package javarush.cashmachine.command;
 
-import cashmachine.cashmachine.Operation;
-import cashmachine.cashmachine.exception.InterruptOperationException;
+import javarush.cashmachine.Operation;
+import javarush.cashmachine.exception.InterruptOperationException;
 
 import java.util.HashMap;
 import java.util.Map;

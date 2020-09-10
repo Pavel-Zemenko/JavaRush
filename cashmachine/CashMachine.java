@@ -1,7 +1,7 @@
-package cashmachine.cashmachine;
+package javarush.cashmachine;
 
-import cashmachine.cashmachine.command.CommandExecutor;
-import cashmachine.cashmachine.exception.InterruptOperationException;
+import javarush.cashmachine.command.CommandExecutor;
+import javarush.cashmachine.exception.InterruptOperationException;
 
 public class CashMachine {
     public static void main(String[] args) {

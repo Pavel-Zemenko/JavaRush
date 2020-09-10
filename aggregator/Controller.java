@@ -1,6 +1,6 @@
-package aggregatror.aggregator;
+package javarush.aggregator;
 
-import aggregatror.aggregator.model.Model;
+import javarush.aggregator.model.Model;
 
 public class Controller {
     private Model model;

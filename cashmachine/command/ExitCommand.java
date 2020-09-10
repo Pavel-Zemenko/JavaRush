@@ -1,7 +1,7 @@
-package cashmachine.cashmachine.command;
+package javarush.cashmachine.command;
 
-import cashmachine.cashmachine.ConsoleHelper;
-import cashmachine.cashmachine.exception.InterruptOperationException;
+import javarush.cashmachine.ConsoleHelper;
+import javarush.cashmachine.exception.InterruptOperationException;
 
 class ExitCommand implements Command {
     @Override

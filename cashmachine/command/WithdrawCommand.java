@@ -1,4 +1,4 @@
-package cashmachine.cashmachine.command;
+package javarush.cashmachine.command;
 
 class WithdrawCommand implements Command {
     @Override

@@ -1,7 +1,7 @@
-package aggregatror.aggregator.view;
+package javarush.aggregator.view;
 
-import aggregatror.aggregator.Controller;
-import aggregatror.aggregator.vo.Vacancy;
+import javarush.aggregator.Controller;
+import javarush.aggregator.vo.Vacancy;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;

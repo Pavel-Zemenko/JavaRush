@@ -1,4 +1,4 @@
-package cashmachine.cashmachine;
+package javarush.cashmachine;
 
 public enum Operation {
     INFO, DEPOSIT, WITHDRAW, EXIT;

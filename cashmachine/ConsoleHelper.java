@@ -1,6 +1,6 @@
-package cashmachine.cashmachine;
+package javarush.cashmachine;
 
-import cashmachine.cashmachine.exception.InterruptOperationException;
+import javarush.cashmachine.exception.InterruptOperationException;
 
 import java.io.BufferedReader;
 import java.io.IOException;

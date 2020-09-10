@@ -1,7 +1,7 @@
-package aggregatror.aggregator.view;
+package javarush.aggregator.view;
 
-import aggregatror.aggregator.Controller;
-import aggregatror.aggregator.vo.Vacancy;
+import javarush.aggregator.Controller;
+import javarush.aggregator.vo.Vacancy;
 
 import java.util.List;
 
