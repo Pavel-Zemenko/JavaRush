@@ -1,5 +1,7 @@
 package javarush.cashmachine;
 
+import javarush.cashmachine.exception.NotEnoughMoneyException;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,5 +36,21 @@ public class CurrencyManipulator {
             }
         }
         return false;
+    }
+
+    public boolean isAmountAvailable(int expectedAmount) {
+        return getTotalAmount() >= expectedAmount;
+    }
+
+    public Map<Integer, Integer> withdrawAmount(int expectedAmount) throws NotEnoughMoneyException {
+        Map<Integer, Integer> resultMap = new HashMap<>();
+
+        // Для теста:
+        resultMap.put(5, 7);
+        resultMap.put(50, 2);
+        resultMap.put(100, 3);
+        resultMap.put(10, 5);
+
+        return resultMap;
     }
 }
