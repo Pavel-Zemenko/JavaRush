@@ -1,12 +1,10 @@
-package cashmachine.exception;
+package cashmachine;
 
-import cashmachine.CurrencyManipulator;
-
+import java.util.HashMap;
 import java.util.Map;
-import java.util.WeakHashMap;
 
 public class CurrencyManipulatorFactory {
-    private static Map<String, CurrencyManipulator> manipulatorMap = new WeakHashMap<>();
+    private static Map<String, CurrencyManipulator> manipulatorMap = new HashMap<>();
 
     private CurrencyManipulatorFactory() {}
 
