@@ -19,4 +19,26 @@ public class ConsoleHelper {
         }
         return string;
     }
+
+    public static String askCurrencyCode() {
+        while (true) {
+            writeMessage("Выберите валюту: RUR, USD, UAH");
+            String currencyCode = readString().toUpperCase();
+            if (currencyCode.matches("RUR|USD|UAH")) {
+                return currencyCode;
+            }
+            writeMessage("Валюта выбрана неверно, повторите ввод.");
+        }
+    }
+
+    public static String[] getValidTwoDigits(String currencyCode) {
+        while (true) {
+            writeMessage("Введите номинал банкнот и их количество:");
+            String inputData = readString();
+            if (inputData.matches("\\d+? \\d+?")) {
+                return inputData.split(" ");
+            }
+            writeMessage("Данные введены некорректно, повторите ввод.");
+        }
+    }
 }

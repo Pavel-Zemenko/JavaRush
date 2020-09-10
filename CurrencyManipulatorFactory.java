@@ -1,6 +1,4 @@
-package cashmachine.exception;
-
-import cashmachine.CurrencyManipulator;
+package cashmachine;
 
 import java.util.Map;
 import java.util.WeakHashMap;
