@@ -1,4 +1,4 @@
-package cashmachine;
+package cashmachine.cashmachine;
 
 public enum Operation {
     INFO, DEPOSIT, WITHDRAW, EXIT;

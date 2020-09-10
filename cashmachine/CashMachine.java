@@ -1,6 +1,6 @@
-package cashmachine;
+package cashmachine.cashmachine;
 
-import cashmachine.command.CommandExecutor;
+import cashmachine.cashmachine.command.CommandExecutor;
 
 public class CashMachine {
     public static void main(String[] args) {

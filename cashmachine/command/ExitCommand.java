@@ -1,4 +1,4 @@
-package cashmachine.command;
+package cashmachine.cashmachine.command;
 
 class ExitCommand implements Command {
     @Override

@@ -1,8 +1,8 @@
-package cashmachine.command;
+package cashmachine.cashmachine.command;
 
-import cashmachine.ConsoleHelper;
-import cashmachine.CurrencyManipulator;
-import cashmachine.CurrencyManipulatorFactory;
+import cashmachine.cashmachine.ConsoleHelper;
+import cashmachine.cashmachine.CurrencyManipulator;
+import cashmachine.cashmachine.CurrencyManipulatorFactory;
 
 import java.util.Collection;
 

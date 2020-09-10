@@ -1,4 +1,4 @@
-package cashmachine.exception;
+package cashmachine.cashmachine.exception;
 
 public class InterruptOperationException extends Exception {
 }

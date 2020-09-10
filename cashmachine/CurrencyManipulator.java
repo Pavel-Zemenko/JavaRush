@@ -1,4 +1,4 @@
-package cashmachine;
+package cashmachine.cashmachine;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,6 +1,6 @@
-package cashmachine.command;
+package cashmachine.cashmachine.command;
 
-import cashmachine.Operation;
+import cashmachine.cashmachine.Operation;
 
 import java.util.HashMap;
 import java.util.Map;

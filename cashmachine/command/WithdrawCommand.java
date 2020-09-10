@@ -1,4 +1,4 @@
-package cashmachine.command;
+package cashmachine.cashmachine.command;
 
 class WithdrawCommand implements Command {
     @Override
