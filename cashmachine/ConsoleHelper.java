@@ -1,6 +1,4 @@
-package javarush.cashmachine;
-
-import javarush.cashmachine.exception.InterruptOperationException;
+package javarush;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -41,7 +39,10 @@ public class ConsoleHelper {
             writeMessage("Введите номинал банкнот и их количество:");
             String inputData = readString();
             if (inputData.matches("\\d+? \\d+?")) {
-                return inputData.split(" ");
+                String[] array = inputData.split(" ");
+                if (!array[0].startsWith("0") && !array[1].startsWith("0")) {
+                    return array;
+                }
             }
             writeMessage("Данные введены некорректно, повторите ввод.");
         }
