@@ -21,7 +21,7 @@ class WithdrawCommand implements Command {
             ConsoleHelper.writeMessage("Введите сумму:");
 
             String input = ConsoleHelper.readString();
-            if (!input.matches("\\d+")) {
+            if (!input.matches("\\d+") || input.equals("0")) {
                 ConsoleHelper.writeMessage("Сумма введена неверно.");
                 continue;
             }
@@ -35,7 +35,8 @@ class WithdrawCommand implements Command {
                             ConsoleHelper.writeMessage(String.format("\t%d - %d", k, v)));
                     ConsoleHelper.writeMessage("Получите, распишитесь!");
                     return;
-                }
+                } else
+                    throw new NotEnoughMoneyException();
             } catch (NotEnoughMoneyException e) {
                 ConsoleHelper.writeMessage("Денег нет, но вы держитесь!");
             }
