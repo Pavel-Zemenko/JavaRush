@@ -41,6 +41,7 @@ public class CommandTest {
      */
     @After
     public void printInfo() {
+        login();
         try {
             System.out.println("=====");
             CommandExecutor.execute(Operation.INFO);
@@ -55,6 +56,8 @@ public class CommandTest {
                 CurrencyManipulatorFactory.getManipulatorByCurrencyCode("UAH");
         int[] denominations = { 100, 50, 20, 10, 5, 2, 1 };
         int amount = 0;
+
+        login();
 
         for (int i = 0; i < 100; i++) {
             int noteIndex = (int) (Math.random() * denominations.length);
@@ -86,6 +89,7 @@ public class CommandTest {
         while (manipulator.hasMoney()) {
             int sum = (int) (Math.random() * 151) * ((int) (Math.random() * 3) - 1);
 
+
             System.out.println("-----");
             System.out.println("sum = " + sum);
             System.out.println("amount = " + amount);
@@ -98,6 +102,7 @@ public class CommandTest {
                 CommandExecutor.execute(operation);
             } catch (InterruptOperationException e) {
                 console.clear();
+                login();
                 continue;
             }
 
@@ -120,6 +125,8 @@ public class CommandTest {
         for (int i = 0; i < 1000; i++) {
             String codeKey = codes[(int) (Math.random() * codes.length)];
             int sum = (int) (Math.random() * 500 + 1) * 10;
+
+            login();
 
             System.out.println("-----");
             System.out.println("sum = " + sum + " " + codeKey);
@@ -162,6 +169,8 @@ public class CommandTest {
         cash.put("EUR", eurDenoms);
         cash.put("USD", usdDenoms);
 
+        login();
+
         for (Map.Entry<String, int[]> entry : cash.entrySet()) {
             for (int d : entry.getValue()) {
                 builder.append("2\n");
@@ -186,4 +195,13 @@ public class CommandTest {
         }
     }
 
+    private void login() {
+        cleanUp();
+        console.setInputData("123456789012\n1234\n");
+        try {
+            CommandExecutor.execute(Operation.LOGIN);
+        } catch (InterruptOperationException e) {
+            throw new RuntimeException("Authorization failed.");
+        }
+    }
 }

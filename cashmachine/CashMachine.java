@@ -6,6 +6,7 @@ import javarush.cashmachine.exception.InterruptOperationException;
 public class CashMachine {
     public static void main(String[] args) {
         try {
+            CommandExecutor.execute(Operation.LOGIN);
             Operation operation;
             do {
                 operation = ConsoleHelper.askOperation();
