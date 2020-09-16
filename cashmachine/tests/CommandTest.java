@@ -119,7 +119,7 @@ public class CommandTest {
 
         for (int i = 0; i < 1000; i++) {
             String codeKey = codes[(int) (Math.random() * codes.length)];
-            int sum = (int) (Math.random() * 250 + 1) * 10;
+            int sum = (int) (Math.random() * 500 + 1) * 10;
 
             System.out.println("-----");
             System.out.println("sum = " + sum + " " + codeKey);
