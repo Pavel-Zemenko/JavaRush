@@ -193,7 +193,7 @@ public class CurrencyManipulator {
                 note = key;
             } else break;
 
-        } while (!issue.isEmpty());
+        } while (true);
 
         if (cashMaps.isEmpty()) {
             throw new NotEnoughMoneyException();
