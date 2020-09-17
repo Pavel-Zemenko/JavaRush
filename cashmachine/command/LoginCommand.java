@@ -1,29 +1,33 @@
 package javarush.cashmachine.command;
 
+import javarush.cashmachine.CashMachine;
 import javarush.cashmachine.ConsoleHelper;
 import javarush.cashmachine.exception.InterruptOperationException;
 
+import java.util.ResourceBundle;
+import java.util.Set;
+
 class LoginCommand implements Command {
-    private final long card = 123456789012L;
-    private final long pin = 1234;
+    private final String baseName = CashMachine.class.getPackage().getName()
+            + ".resources.verifiedCards";
+    private ResourceBundle validCreditCards = ResourceBundle.getBundle(baseName);
 
     @Override
     public void execute() throws InterruptOperationException {
+        Set<String> idSet = validCreditCards.keySet();
+
         while (true) {
             ConsoleHelper.writeMessage("Введите номер карты и пин-код:");
-            try {
-                long card = Long.parseLong(ConsoleHelper.readString());
-                long pin = Long.parseLong(ConsoleHelper.readString());
-                if (card < 0 || pin < 0) {
-                    throw new NumberFormatException();
-                }
-                if (card == this.card && pin == this.pin) {
+            String cardId = ConsoleHelper.readString();
+            String pin = ConsoleHelper.readString();
+
+            for (String id : idSet) {
+                if (id.equals(cardId) && validCreditCards.getString(cardId).equals(pin)) {
                     ConsoleHelper.writeMessage("Добро пожаловать!");
                     return;
                 }
-            } catch (NumberFormatException e) {
-                ConsoleHelper.writeMessage("Данные введены некорректно. Повторите ввод.");
             }
+            ConsoleHelper.writeMessage("Данные введены некорректно. Повторите ввод.");
         }
     }
 }
