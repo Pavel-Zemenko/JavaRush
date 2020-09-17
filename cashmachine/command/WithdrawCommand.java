@@ -13,8 +13,7 @@ import java.util.ResourceBundle;
 import java.util.TreeMap;
 
 class WithdrawCommand implements Command {
-    private final String baseName = CashMachine.class.getPackage().getName()
-            + ".resources.withdraw_en";
+    private final String baseName = CashMachine.RESOURCE_PATH + ".withdraw_en";
     private ResourceBundle res = ResourceBundle.getBundle(baseName);
 
     @Override

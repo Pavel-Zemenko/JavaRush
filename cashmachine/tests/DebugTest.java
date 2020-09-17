@@ -4,7 +4,6 @@ import javarush.cashmachine.ConsoleHelper;
 import javarush.cashmachine.Operation;
 import javarush.cashmachine.command.CommandExecutor;
 import javarush.cashmachine.exception.InterruptOperationException;
-import org.junit.After;
 import org.junit.Test;
 
 import java.io.InputStream;
@@ -69,6 +68,10 @@ public class DebugTest {
         }
 
         console.setInputData("3\nRUR\n24\n");
+        operation = ConsoleHelper.askOperation();
+        CommandExecutor.execute(operation);
+
+        console.setInputData("4\ny\n");
         operation = ConsoleHelper.askOperation();
         CommandExecutor.execute(operation);
     }

@@ -9,8 +9,7 @@ import javarush.cashmachine.exception.InterruptOperationException;
 import java.util.ResourceBundle;
 
 class DepositCommand implements Command {
-    private final String baseName = CashMachine.class.getPackage().getName()
-            + ".resources.deposit_en";
+    private final String baseName = CashMachine.RESOURCE_PATH + ".deposit_en";
     private ResourceBundle res = ResourceBundle.getBundle(baseName);
 
     @Override

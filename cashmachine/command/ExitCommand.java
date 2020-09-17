@@ -7,8 +7,7 @@ import javarush.cashmachine.exception.InterruptOperationException;
 import java.util.ResourceBundle;
 
 class ExitCommand implements Command {
-    private final String baseName = CashMachine.class.getPackage().getName()
-            + ".resources.exit_en";
+    private final String baseName = CashMachine.RESOURCE_PATH + ".exit_en";
     private ResourceBundle res = ResourceBundle.getBundle(baseName);
 
     @Override

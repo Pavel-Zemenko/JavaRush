@@ -9,12 +9,15 @@ import java.util.ResourceBundle;
 
 public class ConsoleHelper {
     private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-    private static final String BASENAME = CashMachine.class.getPackage().getName()
-            + ".resources.common_en";
+    private static final String BASENAME = CashMachine.RESOURCE_PATH + ".common_en";
     private static ResourceBundle res = ResourceBundle.getBundle(BASENAME);
 
     public static void writeMessage(String message) {
         System.out.println(message);
+    }
+
+    public static void printExitMessage() {
+        writeMessage(res.getString("the.end"));
     }
 
     public static String readString() throws InterruptOperationException {
@@ -22,7 +25,6 @@ public class ConsoleHelper {
         try {
             string = reader.readLine();
             if (string.toUpperCase().contains("EXIT")) {
-                writeMessage(res.getString("the.end"));
                 throw new InterruptOperationException();
             }
         } catch (IOException e) {

@@ -8,12 +8,10 @@ import java.util.ResourceBundle;
 import java.util.Set;
 
 class LoginCommand implements Command {
-    private final String baseNameRes = CashMachine.class.getPackage().getName()
-            + ".resources.login_en";
+    private final String baseNameRes = CashMachine.RESOURCE_PATH + ".login_en";
     private ResourceBundle res = ResourceBundle.getBundle(baseNameRes);
 
-    private final String baseNameCards = CashMachine.class.getPackage().getName()
-            + ".resources.verifiedCards";
+    private final String baseNameCards = CashMachine.RESOURCE_PATH + ".verifiedCards";
     private ResourceBundle validCreditCards = ResourceBundle.getBundle(baseNameCards);
 
     @Override

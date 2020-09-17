@@ -4,7 +4,7 @@ CashMachine (15)
 
    public static final String RESOURCE_PATH;
 
-   Отрефакторь загрузку всех ResourceBundle с учетом RESOURCE_PATH.
+   Отрефакторь загрузку всех ResourceBundle с учётом RESOURCE_PATH.
 
 2. В классе CashMachine не должно быть инициализации ResourceBundle.
    Вынеси из CashMachine сообщение о выходе в ConsoleHelper, назови метод printExitMessage.

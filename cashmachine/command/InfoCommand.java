@@ -9,8 +9,7 @@ import java.util.Collection;
 import java.util.ResourceBundle;
 
 class InfoCommand implements Command {
-    private final String baseName = CashMachine.class.getPackage().getName()
-            + ".resources.info_en";
+    private final String baseName = CashMachine.RESOURCE_PATH + ".info_en";
     private ResourceBundle res = ResourceBundle.getBundle(baseName);
 
     @Override
