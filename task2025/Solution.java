@@ -8,7 +8,7 @@ import java.util.TreeSet;
 
 public class Solution {
     private static long[][] matrix;
-    private static volatile TreeSet<Long> resultSet = new TreeSet<>();
+    private static TreeSet<Long> resultSet = new TreeSet<>();
 
     static {
         matrix = new long[10][20];
