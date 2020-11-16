@@ -19,8 +19,6 @@ public class Solution {
             List<String> lines1 = readFileToList(consoleReader.readLine());
             List<String> lines2 = readFileToList(consoleReader.readLine());
             mergeToLines(lines1, lines2);
-//            System.out.println(lines1);  // ДЛЯ ТЕСТИРОВАНИЯ
-//            System.out.println(lines2);  // ДЛЯ ТЕСТИРОВАНИЯ
         }
     }
 
