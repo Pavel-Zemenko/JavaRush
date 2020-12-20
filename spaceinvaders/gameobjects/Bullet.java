@@ -1,7 +1,8 @@
 package javarush.spaceinvaders.gameobjects;
 
 
-import com.javarush.games.spaceinvaders.*;
+import javarush.spaceinvaders.Direction;
+import javarush.spaceinvaders.ShapeMatrix;
 
 public class Bullet extends GameObject {
     public boolean isAlive = true;
@@ -15,6 +16,10 @@ public class Bullet extends GameObject {
 
     public void move () {
         y += dy;
+    }
+
+    public void kill() {
+        isAlive = false;
     }
 
 }

@@ -1,13 +1,14 @@
 package javarush.spaceinvaders.gameobjects;
 
 import com.javarush.engine.cell.Game;
-import com.javarush.games.spaceinvaders.Direction;
-import com.javarush.games.spaceinvaders.ShapeMatrix;
-import com.javarush.games.spaceinvaders.SpaceInvadersGame;
+import javarush.spaceinvaders.Direction;
+import javarush.spaceinvaders.ShapeMatrix;
+import javarush.spaceinvaders.SpaceInvadersGame;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class EnemyFleet {
     private static final int ROWS_COUNT = 3;
@@ -23,7 +24,9 @@ public class EnemyFleet {
 
     private void createShips() {
         ships = new ArrayList<>();
-
+        Boss boss = new Boss((double) STEP * COLUMNS_COUNT / 2
+                - (double) ShapeMatrix.BOSS_ANIMATION_FIRST.length / 2 - 1, 5);
+        ships.add(boss);
         for (int row = 0; row < ROWS_COUNT; row++) {
             for (int col = 0; col < COLUMNS_COUNT; col++) {
                 ships.add(new EnemyShip(col * STEP, row * STEP + 12));
@@ -51,8 +54,21 @@ public class EnemyFleet {
         return list.get(0);
     }
 
+    public double getBottomBorder() {
+        if (ships.isEmpty()) return 0;
+        List<Double> list = new ArrayList<>();
+        ships.stream()
+                .max(Comparator.comparingDouble(o -> o.y + o.height))
+                .ifPresent(enemyShip -> list.add(enemyShip.y + enemyShip.height));
+        return list.get(0);
+    }
+
     private double getSpeed() {
         return Math.min(2.0, (3.0 / ships.size()));
+    }
+
+    public int getShipsCount() {
+        return ships.size();
     }
 
     public void move() {
@@ -71,6 +87,31 @@ public class EnemyFleet {
 
             ships.forEach(ship -> ship.move(direction, speed));
         }
+    }
+
+    public Bullet fire(Game game) {
+        if (ships.isEmpty() || game.getRandomNumber(100 / SpaceInvadersGame.COMPLEXITY) > 0) {
+            return null;
+        }
+        int shipIndex = game.getRandomNumber(ships.size());
+        return ships.get(shipIndex).fire();
+    }
+
+    public int verifyHit(List<Bullet> bullets) {
+        if (bullets.isEmpty()) return 0;
+        AtomicInteger sumScore = new AtomicInteger(0);
+        ships.forEach(ship -> bullets.forEach(bullet -> {
+            if (ship.isAlive && bullet.isAlive && bullet.isCollision(ship)) {
+                ship.kill();
+                bullet.kill();
+                sumScore.addAndGet(ship.score);
+            }
+        }));
+        return sumScore.get();
+    }
+
+    public void deleteHiddenShips() {
+        ships.removeIf(ship -> !ship.isVisible());
     }
 
 }
