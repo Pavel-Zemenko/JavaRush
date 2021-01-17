@@ -24,10 +24,10 @@ public class GameObject {
     }
 
     public void draw(Game game) {
-        for (int i = 0; i < width; i++) {
-            for (int j = 0; j < height; j++) {
-                int colorIndex = matrix[j][i];
-                game.setCellColor(x + i, y + j, Color.values()[colorIndex]);
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                Color color = Color.values()[matrix[y][x]];
+                game.setCellColor(this.x + x, this.y + y, color);
             }
         }
     }
