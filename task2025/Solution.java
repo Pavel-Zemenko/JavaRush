@@ -1,14 +1,20 @@
 package javarush.task2025;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Iterator;
+import java.util.SortedSet;
 import java.util.TreeSet;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
-// Поиск чисел Армстронга
-
+/*
+Алгоритмы-числа (многопоточная версия)
+*/
 public class Solution {
     private static long[][] matrix;
-    private static TreeSet<Long> resultSet = new TreeSet<>();
+    private static Generator generator;
 
     static {
         matrix = new long[10][20];
@@ -23,31 +29,9 @@ public class Solution {
         }
     }
 
-    public static long[] getNumbers(long N) {
-        resultSet.clear();
-        if (N > 0) {
-            Generator generator = new Generator(N);
-            while (true) {
-                int[] array = generator.getDigits();
-                checker(array);
-                while (array.length > 0 && array[0] == 0) {
-                    array = trimZero(array);
-                    checker(array);
-                }
-                if (generator.isGenerationAllowed())
-                    generator.decrementDigit(0);
-                else break;
-            }
-
-        }
-        return getResultArray(N);
-    }
-
-    // ВСПОМОГАТЕЛЬНЫЕ КЛАССЫ И МЕТОДЫ
-
     /*
      * Генератор для получения только "полезных" наборов цифр,
-     * на базе которых в дальенйшем будет осуществляться поиск чисел Армстронга.
+     * на базе которых в дальнейшем будет осуществляться поиск чисел Армстронга.
      */
     static class Generator {
         private int[] digits;
@@ -59,20 +43,19 @@ public class Solution {
             isGenerationAllowed = true;
         }
 
-        public int decrementDigit(int index) {
-            if (index > digits.length - 1) {
-                int lastDigit = digits[digits.length - 1];
-                if (lastDigit <= 1) {
-                    isGenerationAllowed = false;
-                    return -1;
-                }
+        public void decrementDigit() {
+            int index = 0;
+
+            while (index < digits.length && digits[index] == 0) {
+                index++;
             }
 
-            if (digits[index]-- == 0) {
-                digits[index] = decrementDigit(index + 1);
+            if (index + 1 == digits.length && digits[index] == 1) {
+                isGenerationAllowed = false;
+                return;
             }
 
-            return digits[index];
+            Arrays.fill(digits, 0, index + 1, digits[index] - 1);
         }
 
         public int[] getDigits() {
@@ -85,73 +68,108 @@ public class Solution {
     }
 
     /*
-     * Возвращает порядок числа (количество разрядов в числе).
-     * Если передаваемое число отрицательное, возвращает ноль.
+     * Содержит общий алгоритм для поиска чисел Армстронга,
+     * а также необходимые вспомогательные инструменты.
      */
-    private static int getNumberOrder(long number) {
-        if (number < 0)
-            return 0;
-        return String.valueOf(number).length();
-    }
+    static class CalcTask implements Runnable {
+        private final SortedSet<Long> resultSet;
 
-    /*
-     * Преобразует число в массив составялющих его цифр.
-     */
-    private static int[] digitize(long number) {
-        int[] digits = new int[getNumberOrder(number)];
-        long tempNumber1 = number, tempNumber2;
-
-        for (int i = 0; i < digits.length; i++) {
-            digits[i] = (int) (tempNumber1 % 10);
-
-            if ((tempNumber2 = tempNumber1 / 10) > 0)
-                tempNumber1 = tempNumber2;
+        public CalcTask(SortedSet<Long> resultSet) {
+            this.resultSet = resultSet;
         }
-        return digits;
-    }
 
-    /*
-     * Вычисляет и возвращает степенную сумму набора цифр.
-     */
-    private static long getPowerSum(int[] digits) {
-        if (digits.length == 0 || digits[0] < 0)
-            return 0;
-
-        long result = 0;
-        for (int digit : digits) {
-            if (digit == -1)
-                break;
-            result += matrix[digit][digits.length];
+        @Override
+        public void run() {
+            while (true) {
+                synchronized (generator) {
+                    int[] array = generator.getDigits();
+                    checker(array);
+                    while (array.length > 0 && array[0] == 0) {
+                        array = trimZero(array);
+                        checker(array);
+                    }
+                    if (generator.isGenerationAllowed()) {
+                        generator.decrementDigit();
+                    }
+                    else return;
+                }
+            }
         }
-        return result;
-    }
 
-    /*
-     * Проверяет набор цифр. Если в результате проверки найдено число Армстронга,
-     * оно будет занесено в итоговое множество resultSet.
-     */
-    private static void checker(int[] digits) {
-        long powerSum = getPowerSum(digits);
-        int[] powerSumDigits = digitize(powerSum);
-        if (powerSum == getPowerSum(powerSumDigits)) {
-            resultSet.add(powerSum);
+        /*
+         * Возвращает порядок числа (количество разрядов в числе).
+         * Если передаваемое число отрицательное, возвращает ноль.
+         */
+        private int getNumberOrder(long number) {
+            long p = 10;
+            for (int i = 1; i < 19; i++) {
+                if (number < p) {
+                    return i;
+                }
+                p *= 10;
+            }
+            return 19;
         }
-    }
 
-    /*
-     * Отрезает начальный ноль (если таковой имеется) от передаваемого массива.
-     */
-    private static int[] trimZero(int[] digits) {
-        if (digits[0] == 0) {
-            return Arrays.copyOfRange(digits, 1, digits.length);
+        /*
+         * Преобразует число в массив составялющих его цифр.
+         */
+        private int[] digitize(long number) {
+            int[] digits = new int[getNumberOrder(number)];
+            long tempNumber1 = number, tempNumber2;
+
+            for (int i = 0; i < digits.length; i++) {
+                digits[i] = (int) (tempNumber1 % 10);
+
+                if ((tempNumber2 = tempNumber1 / 10) > 0)
+                    tempNumber1 = tempNumber2;
+            }
+            return digits;
         }
-        return new int[0];
+
+        /*
+         * Вычисляет и возвращает степенную сумму набора цифр.
+         */
+        private long getPowerSum(int[] digits) {
+            if (digits.length == 0 || digits[0] < 0)
+                return 0;
+
+            long result = 0;
+            for (int digit : digits) {
+                if (digit == -1)
+                    break;
+                result += matrix[digit][digits.length];
+            }
+            return result;
+        }
+
+        /*
+         * Проверяет набор цифр. Если в результате проверки найдено число Армстронга,
+         * оно будет занесено в итоговое множество resultSet.
+         */
+        private void checker(int[] digits) {
+            long powerSum = getPowerSum(digits);
+            int[] powerSumDigits = digitize(powerSum);
+            if (powerSum == getPowerSum(powerSumDigits)) {
+                resultSet.add(powerSum);
+            }
+        }
+
+        /*
+         * Отрезает начальный ноль (если таковой имеется) от передаваемого массива.
+         */
+        private int[] trimZero(int[] digits) {
+            if (digits[0] == 0) {
+                return Arrays.copyOfRange(digits, 1, digits.length);
+            }
+            return new int[0];
+        }
     }
 
     /*
      * Возвращает массив, полученный из множества resultSet.
      */
-    private static long[] getResultArray(long number) {
+    private static long[] getResultArray(long number, SortedSet<Long> resultSet) {
         resultSet.removeIf(armstrong -> armstrong == 0 || armstrong >= number);
         long[] resultArray = new long[resultSet.size()];
         Iterator<Long> it = resultSet.iterator();
@@ -161,6 +179,27 @@ public class Solution {
         return resultArray;
     }
 
+    public static long[] getNumbers(long N) {
+        SortedSet<Long> resultSet = Collections.synchronizedSortedSet(new TreeSet<>());
+
+        if (N > 0) {
+            int threadCount = Runtime.getRuntime().availableProcessors() - 1;
+            generator = new Generator(N);
+            ExecutorService exec = Executors.newFixedThreadPool(threadCount);
+
+            for (int i = 0; i < threadCount; i++)
+                exec.execute(new CalcTask(resultSet));
+            exec.shutdown();
+
+            try {
+                exec.awaitTermination(10, TimeUnit.SECONDS);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return getResultArray(N, resultSet);
+    }
 
     public static void main(String[] args) {
         long a, b;
@@ -169,6 +208,9 @@ public class Solution {
                 -1,
                 0,
                 10,
+                371,
+                548834,
+                548835,
                 Integer.MAX_VALUE,
                 Long.MAX_VALUE,
         };
