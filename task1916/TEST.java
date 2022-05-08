@@ -27,8 +27,8 @@ public class TEST {
 
     {
         dataList.add(new TestData(
-                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file1_v1.txt",
-                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file2_v1.txt",
+                "src/javarush/task1916/testfiles/1916_file1_v1.txt",
+                "src/javarush/task1916/testfiles/1916_file2_v1.txt",
                 new String[] {
                         "SAME строка1",
                         "REMOVED строка2",
@@ -46,8 +46,8 @@ public class TEST {
         ));
 
         dataList.add(new TestData(
-                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file1_v2.txt",
-                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file2_v2.txt",
+                "src/javarush/task1916/testfiles/1916_file1_v2.txt",
+                "src/javarush/task1916/testfiles/1916_file2_v2.txt",
                 new String[] {
                         "SAME строка1",
                         "SAME строка2",
@@ -65,8 +65,8 @@ public class TEST {
         ));
 
         dataList.add(new TestData(
-                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file1_v3.txt",
-                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file2_v3.txt",
+                "src/javarush/task1916/testfiles/1916_file1_v3.txt",
+                "src/javarush/task1916/testfiles/1916_file2_v3.txt",
                 new String[] {
                         "SAME 1000001",
                         "REMOVED 1000002",
@@ -84,8 +84,8 @@ public class TEST {
         ));
 
         dataList.add(new TestData(
-                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file1_v4.txt",
-                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file2_v4.txt",
+                "src/javarush/task1916/testfiles/1916_file1_v4.txt",
+                "src/javarush/task1916/testfiles/1916_file2_v4.txt",
                 new String[] {
                         "SAME строка1",
                         "ADDED строка0"
@@ -93,8 +93,8 @@ public class TEST {
         ));
 
         dataList.add(new TestData(
-                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file1_v5.txt",
-                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file2_v5.txt",
+                "src/javarush/task1916/testfiles/1916_file1_v5.txt",
+                "src/javarush/task1916/testfiles/1916_file2_v5.txt",
                 new String[] {
                         "SAME 1000001",
                         "REMOVED 1000002",
@@ -112,8 +112,8 @@ public class TEST {
         ));
 
         dataList.add(new TestData(
-                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file1_v6.txt",
-                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file2_v6.txt",
+                "src/javarush/task1916/testfiles/1916_file1_v6.txt",
+                "src/javarush/task1916/testfiles/1916_file2_v6.txt",
                 new String[] {
                         "SAME строка1",
                         "REMOVED строка0",
@@ -127,8 +127,8 @@ public class TEST {
         ));
 
         dataList.add(new TestData(
-                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file1_v7.txt",
-                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file2_v7.txt",
+                "src/javarush/task1916/testfiles/1916_file1_v7.txt",
+                "src/javarush/task1916/testfiles/1916_file2_v7.txt",
                 new String[] {
                         "REMOVED строка0",
                         "SAME строка1",
@@ -137,8 +137,8 @@ public class TEST {
         ));
 
         dataList.add(new TestData(
-                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file1_v8.txt",
-                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file2_v8.txt",
+                "src/javarush/task1916/testfiles/1916_file1_v8.txt",
+                "src/javarush/task1916/testfiles/1916_file2_v8.txt",
                 new String[] {
                         "ADDED строка0",
                         "SAME строка2",
@@ -149,8 +149,8 @@ public class TEST {
         ));
 
         dataList.add(new TestData(
-                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file1_v9.txt",
-                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file2_v9.txt",
+                "src/javarush/task1916/testfiles/1916_file1_v9.txt",
+                "src/javarush/task1916/testfiles/1916_file2_v9.txt",
                 new String[] {
                         "REMOVED строка0",
                         "SAME строка1"
