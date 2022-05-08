@@ -14,11 +14,13 @@ import java.util.List;
 public class Solution {
     public static List<LineItem> lines = new ArrayList<>();
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         try (BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in))) {
             List<String> lines1 = readFileToList(consoleReader.readLine());
             List<String> lines2 = readFileToList(consoleReader.readLine());
             mergeToLines(lines1, lines2);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
