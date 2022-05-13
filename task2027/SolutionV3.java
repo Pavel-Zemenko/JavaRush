@@ -5,6 +5,11 @@ import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/*
+Кроссворд
+(третий способ решения)
+*/
+
 public class SolutionV3 {
     public static void main(String[] args) throws Exception {
         int[][] crossword = new int[][] {
@@ -117,8 +122,7 @@ public class SolutionV3 {
         }
 
         /*
-         * Выполняет в линии поиск всех слов из списка word.
-         * Поиск в линии производится в прямом и обратном направлениях
+         * Выполняет поиск в линии всех слов из списка word
          */
         public List<Word> scan(String word) {
             List<Word> resultList = new ArrayList<>();
@@ -144,7 +148,7 @@ public class SolutionV3 {
     }
 
     /*
-     * Перечисление направлений ориентации строк в кроссводре
+     * Перечисление направлений ориентации строк в кроссворде
      */
     private enum Direction {
         RIGHT(1, 0, crossword -> leftSide(crossword)),

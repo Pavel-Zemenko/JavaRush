@@ -6,6 +6,10 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 
+/*
+Набор тестов к задаче "Кроссворд"
+*/
+
 public class TEST {
 
     @Test

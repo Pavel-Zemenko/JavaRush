@@ -5,6 +5,11 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/*
+Кроссворд
+(второй способ решения)
+*/
+
 public class SolutionV2 {
     public static void main(String[] args) throws Exception {
         int[][] crossword = new int[][] {
@@ -151,8 +156,8 @@ public class SolutionV2 {
         }
 
         /*
-         * Выполняет в линии поиск всех слов из списка word.
-         * Поиск в линии производится в прямом и обратном направлениях
+         * Выполняет поиск в линии всех слов из списка word.
+         * Поиск производится в прямом и обратном направлениях
          */
         public List<Word> scan(String word) {
             List<Word> resultList = new ArrayList<>();
