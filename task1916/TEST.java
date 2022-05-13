@@ -10,6 +10,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/*
+Набор тестов к задаче "Отслеживаем изменения"
+*/
+
 public class TEST {
     private static class TestData {
         String fileName1;
@@ -27,8 +31,8 @@ public class TEST {
 
     {
         dataList.add(new TestData(
-                "src/javarush/task1916/testfiles/1916_file1_v1.txt",
-                "src/javarush/task1916/testfiles/1916_file2_v1.txt",
+                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file1_v1.txt",
+                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file2_v1.txt",
                 new String[] {
                         "SAME строка1",
                         "REMOVED строка2",
@@ -46,8 +50,8 @@ public class TEST {
         ));
 
         dataList.add(new TestData(
-                "src/javarush/task1916/testfiles/1916_file1_v2.txt",
-                "src/javarush/task1916/testfiles/1916_file2_v2.txt",
+                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file1_v2.txt",
+                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file2_v2.txt",
                 new String[] {
                         "SAME строка1",
                         "SAME строка2",
@@ -65,8 +69,8 @@ public class TEST {
         ));
 
         dataList.add(new TestData(
-                "src/javarush/task1916/testfiles/1916_file1_v3.txt",
-                "src/javarush/task1916/testfiles/1916_file2_v3.txt",
+                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file1_v3.txt",
+                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file2_v3.txt",
                 new String[] {
                         "SAME 1000001",
                         "REMOVED 1000002",
@@ -84,8 +88,8 @@ public class TEST {
         ));
 
         dataList.add(new TestData(
-                "src/javarush/task1916/testfiles/1916_file1_v4.txt",
-                "src/javarush/task1916/testfiles/1916_file2_v4.txt",
+                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file1_v4.txt",
+                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file2_v4.txt",
                 new String[] {
                         "SAME строка1",
                         "ADDED строка0"
@@ -93,8 +97,8 @@ public class TEST {
         ));
 
         dataList.add(new TestData(
-                "src/javarush/task1916/testfiles/1916_file1_v5.txt",
-                "src/javarush/task1916/testfiles/1916_file2_v5.txt",
+                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file1_v5.txt",
+                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file2_v5.txt",
                 new String[] {
                         "SAME 1000001",
                         "REMOVED 1000002",
@@ -112,8 +116,8 @@ public class TEST {
         ));
 
         dataList.add(new TestData(
-                "src/javarush/task1916/testfiles/1916_file1_v6.txt",
-                "src/javarush/task1916/testfiles/1916_file2_v6.txt",
+                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file1_v6.txt",
+                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file2_v6.txt",
                 new String[] {
                         "SAME строка1",
                         "REMOVED строка0",
@@ -127,8 +131,8 @@ public class TEST {
         ));
 
         dataList.add(new TestData(
-                "src/javarush/task1916/testfiles/1916_file1_v7.txt",
-                "src/javarush/task1916/testfiles/1916_file2_v7.txt",
+                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file1_v7.txt",
+                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file2_v7.txt",
                 new String[] {
                         "REMOVED строка0",
                         "SAME строка1",
@@ -137,8 +141,8 @@ public class TEST {
         ));
 
         dataList.add(new TestData(
-                "src/javarush/task1916/testfiles/1916_file1_v8.txt",
-                "src/javarush/task1916/testfiles/1916_file2_v8.txt",
+                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file1_v8.txt",
+                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file2_v8.txt",
                 new String[] {
                         "ADDED строка0",
                         "SAME строка2",
@@ -149,11 +153,107 @@ public class TEST {
         ));
 
         dataList.add(new TestData(
-                "src/javarush/task1916/testfiles/1916_file1_v9.txt",
-                "src/javarush/task1916/testfiles/1916_file2_v9.txt",
+                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file1_v9.txt",
+                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file2_v9.txt",
                 new String[] {
                         "REMOVED строка0",
                         "SAME строка1"
+                }
+        ));
+
+        dataList.add(new TestData(
+                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file1_v10.txt",
+                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file2_v10.txt",
+                new String[] {
+                        "ADDED строка0"
+                }
+        ));
+
+        dataList.add(new TestData(
+                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file1_v11.txt",
+                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file2_v11.txt",
+                new String[] {
+                        "REMOVED строка0"
+                }
+        ));
+
+        dataList.add(new TestData(
+                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file1_v12.txt",
+                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file2_v12.txt",
+                new String[] {
+                        "REMOVED строка1",
+                        "SAME строка0",
+                        "REMOVED строка1",
+                        "SAME строка0",
+                        "REMOVED строка1",
+                        "SAME строка0",
+                        "REMOVED строка1"
+                }
+        ));
+
+        dataList.add(new TestData(
+                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file1_v13.txt",
+                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file2_v13.txt",
+                new String[] {
+                        "ADDED строка1",
+                        "SAME строка0",
+                        "ADDED строка1",
+                        "SAME строка0",
+                        "ADDED строка1",
+                        "SAME строка0",
+                        "ADDED строка1"
+                }
+        ));
+
+        dataList.add(new TestData(
+                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file1_v14.txt",
+                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file2_v14.txt",
+                new String[] {
+                        "REMOVED строка1",
+                        "SAME строка0",
+                        "ADDED строка2"
+                }
+        ));
+
+        dataList.add(new TestData(
+                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file1_v15.txt",
+                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file2_v15.txt",
+                new String[] {
+                        "ADDED строка2",
+                        "SAME строка0",
+                        "REMOVED строка1"
+                }
+        ));
+
+        dataList.add(new TestData(
+                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file1_v16.txt",
+                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file2_v16.txt",
+                new String[] {
+                        "SAME строка1",
+                        "SAME строка2",
+                        "SAME строка3",
+                        "SAME строка0",
+                        "SAME строка5",
+                        "ADDED строка0",
+                        "SAME строка1",
+                        "SAME строка2",
+                        "SAME строка3",
+                        "REMOVED строка4",
+                        "SAME строка5"
+                }
+        ));
+
+        dataList.add(new TestData(
+                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file1_v17.txt",
+                "D:\\Обмен\\javarush\\testFiles\\task19\\1916_file2_v17.txt",
+                new String[] {
+                        "REMOVED строка1",
+                        "SAME строка2",
+                        "ADDED строка8",
+                        "SAME строка3",
+                        "ADDED строка7",
+                        "SAME строка4",
+                        "REMOVED строка5",
                 }
         ));
     }
@@ -232,6 +332,70 @@ public class TEST {
         TestData testData = dataList.get(8);
         runTest(testData.fileName1, testData.fileName2);
         printLines("TEST 9");
+        checkLines(testData.expectedStrings);
+    }
+
+    @Test
+    public void test10() {
+        TestData testData = dataList.get(9);
+        runTest(testData.fileName1, testData.fileName2);
+        printLines("TEST 10");
+        checkLines(testData.expectedStrings);
+    }
+
+    @Test
+    public void test11() {
+        TestData testData = dataList.get(10);
+        runTest(testData.fileName1, testData.fileName2);
+        printLines("TEST 11");
+        checkLines(testData.expectedStrings);
+    }
+
+    @Test
+    public void test12() {
+        TestData testData = dataList.get(11);
+        runTest(testData.fileName1, testData.fileName2);
+        printLines("TEST 12");
+        checkLines(testData.expectedStrings);
+    }
+
+    @Test
+    public void test13() {
+        TestData testData = dataList.get(12);
+        runTest(testData.fileName1, testData.fileName2);
+        printLines("TEST 13");
+        checkLines(testData.expectedStrings);
+    }
+
+    @Test
+    public void test14() {
+        TestData testData = dataList.get(13);
+        runTest(testData.fileName1, testData.fileName2);
+        printLines("TEST 14");
+        checkLines(testData.expectedStrings);
+    }
+
+    @Test
+    public void test15() {
+        TestData testData = dataList.get(14);
+        runTest(testData.fileName1, testData.fileName2);
+        printLines("TEST 15");
+        checkLines(testData.expectedStrings);
+    }
+
+    @Test
+    public void test16() {
+        TestData testData = dataList.get(15);
+        runTest(testData.fileName1, testData.fileName2);
+        printLines("TEST 16");
+        checkLines(testData.expectedStrings);
+    }
+
+    @Test
+    public void test17() {
+        TestData testData = dataList.get(16);
+        runTest(testData.fileName1, testData.fileName2);
+        printLines("TEST 17");
         checkLines(testData.expectedStrings);
     }
 
